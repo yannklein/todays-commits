@@ -14,7 +14,7 @@ configure do
 end
 
 # set :port, 10000
-set :allow_origin, :any
+# set :allow_origin, :any
 
 # options "*" do
 #   response.headers["Allow"] = "HEAD,GET,PUT,POST,DELETE,OPTIONS"
