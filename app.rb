@@ -1,5 +1,8 @@
 require 'sinatra'
 require 'sinatra/reloader'
+require "sinatra/json"
+require 'open-uri'
+require 'date'
 # Commented out as the project don't use DB
 # require 'sinatra/activerecord'
 # require_relative 'config/application'
@@ -7,6 +10,19 @@ require 'sinatra/reloader'
 get '/' do
   @hello = 'Hi there!'
   erb :index
+end
+
+get '/:user_name' do
+  url = "https://github.com/#{params[:user_name]}"
+  raw_html = URI.open(url).read
+  html_doc = Nokogiri::HTML(raw_html)
+  contrib_element = html_doc.search("rect[data-date='#{ Date.today.strftime('%Y-%m-%d')}']")
+  contrib = {
+    day: Date.today.strftime('%Y-%m-%d'),
+    user_name: params[:user_name]
+    commits: contrib_element.attribute("data-count").value
+  }
+  json contrib
 end
 
 

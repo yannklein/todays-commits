@@ -2,14 +2,17 @@ source 'https://rubygems.org'
 
 gem 'sinatra'
 gem 'sinatra-contrib'
-gem 'sinatra-activerecord'
 gem 'rake'
-gem 'pg'
 gem 'rspec'
 gem 'rubocop'
 gem 'pry'
 gem 'faker'
+gem 'nokogiri'
 
-group :development do
-  gem 'sqlite3'
-end
+# no DB here! commented out:
+# gem 'sinatra-activerecord'
+# gem 'pg'
+
+# group :development do
+#   gem 'sqlite3'
+# end
