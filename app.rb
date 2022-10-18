@@ -18,10 +18,12 @@ get '/:user_name' do
   raw_html = URI.open(url).read
   html_doc = Nokogiri::HTML(raw_html)
   contrib_element = html_doc.search("rect[data-date='#{ Date.today.strftime('%Y-%m-%d')}']")
+  location_element = html_doc.search(".p-label").text.split(", ")
   contrib = {
     day: Date.today.strftime('%Y-%m-%d'),
     user_name: params[:user_name],
-    commits: contrib_element.attribute("data-count").value
+    commits: contrib_element.attribute("data-count").value,
+    location: location_element
   }
   json contrib
 end
