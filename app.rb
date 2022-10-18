@@ -11,6 +11,7 @@ require 'nokogiri'
 
 configure do
   enable :cross_origin
+  set :allow_origin, :any
 end
 
 get '/' do
