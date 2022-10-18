@@ -13,8 +13,14 @@ configure do
   enable :cross_origin
 end
 
-before do
-  response.headers['Access-Control-Allow-Origin'] = '*'
+set :allow_origin, :any
+
+options "*" do
+  response.headers["Allow"] = "HEAD,GET,PUT,POST,DELETE,OPTIONS"
+ 
+  response.headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Cache-Control, Accept"
+ 
+  200
 end
 
 get '/' do
