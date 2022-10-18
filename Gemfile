@@ -12,6 +12,10 @@ gem 'pry'
 gem 'faker'
 gem 'nokogiri'
 
+gem "puma", "~> 6.0"
+gem "thin", "~> 1.8"
+gem "falcon", "~> 0.42.3"
+gem "webrick", "~> 1.7"
 # no DB here! commented out:
 # gem 'sinatra-activerecord'
 # gem 'pg'
