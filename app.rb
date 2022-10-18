@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require "sinatra/json"
-require "sinatra/cors"
+require 'sinatra/cross_origin'
 require 'open-uri'
 require 'date'
 require 'nokogiri'
@@ -9,8 +9,9 @@ require 'nokogiri'
 # require 'sinatra/activerecord'
 # require_relative 'config/application'
 
-set :allow_origin, "*"
-set :allow_methods, "GET"
+configure do
+  enable :cross_origin
+end
 
 get '/' do
   erb :index
