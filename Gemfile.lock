@@ -133,7 +133,7 @@ GEM
       rack-protection (= 3.0.2)
       sinatra (= 3.0.2)
       tilt (~> 2.0)
-    sinatra-cross_origin (0.4.0)
+    sinatra-cross_origin (0.3.2)
     thin (1.8.1)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
@@ -158,7 +158,7 @@ DEPENDENCIES
   rubocop
   sinatra
   sinatra-contrib
-  sinatra-cross_origin
+  sinatra-cross_origin (~> 0.3.1)
   thin (~> 1.8)
   webrick (~> 1.7)
 

@@ -13,12 +13,15 @@ configure do
   enable :cross_origin
 end
 
+before do
+  response.headers['Access-Control-Allow-Origin'] = '*'
+end
+
 get '/' do
   erb :index
 end
 
 get '/:user_name' do
-  cross_origin :allow_origin, :any
   url = "https://github.com/#{params[:user_name]}"
   raw_html = URI.open(url).read
   html_doc = Nokogiri::HTML(raw_html)
@@ -33,6 +36,12 @@ get '/:user_name' do
   json contrib
 end
 
+options "*" do
+  response.headers["Allow"] = "GET, PUT, POST, DELETE, OPTIONS"
+  response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type, Accept, X-User-Email, X-Auth-Token"
+  response.headers["Access-Control-Allow-Origin"] = "*"
+  200
+end
 
 
 # # DO NOT CHANGE BELOW LINES
