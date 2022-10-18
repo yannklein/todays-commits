@@ -1,18 +1,13 @@
 require 'sinatra'
 require 'sinatra/reloader'
-require 'sinatra/activerecord'
-require_relative 'config/application'
+# Commented out as the project don't use DB
+# require 'sinatra/activerecord'
+# require_relative 'config/application'
 
 get '/' do
   @hello = 'Hi there!'
   erb :index
 end
-
-# Ruby embedded into views files
-# pe + tab   ->    <%=  %>     (display something)
-# er + tab   ->    <%   %>     (display nothing)
-
-
 
 
 
