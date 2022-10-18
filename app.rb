@@ -9,7 +9,6 @@ require 'nokogiri'
 # require_relative 'config/application'
 
 get '/' do
-  @hello = 'Hi there!'
   erb :index
 end
 
