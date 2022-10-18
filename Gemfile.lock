@@ -70,6 +70,7 @@ GEM
       rack-protection (= 3.0.2)
       sinatra (= 3.0.2)
       tilt (~> 2.0)
+    sinatra-cross_origin (0.4.0)
     tilt (2.0.11)
     unicode-display_width (2.3.0)
 
@@ -85,6 +86,7 @@ DEPENDENCIES
   rubocop
   sinatra
   sinatra-contrib
+  sinatra-cross_origin
 
 BUNDLED WITH
    2.3.20

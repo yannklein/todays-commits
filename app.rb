@@ -1,7 +1,6 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require "sinatra/json"
-# require 'sinatra/cross_origin'
 require 'open-uri'
 require 'date'
 require 'nokogiri'
@@ -9,20 +8,19 @@ require 'nokogiri'
 # require 'sinatra/activerecord'
 # require_relative 'config/application'
 
-# configure do
-#   enable :cross_origin
-# end
+configure do
+  enable :cross_origin
+end
 
-# set :port, 10000
-# set :allow_origin, :any
+set :allow_origin, :any
 
-# options "*" do
-#   response.headers["Allow"] = "HEAD,GET,PUT,POST,DELETE,OPTIONS"
+options "*" do
+  response.headers["Allow"] = "HEAD,GET,PUT,POST,DELETE,OPTIONS"
  
-#   response.headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Cache-Control, Accept"
+  response.headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Cache-Control, Accept"
  
-#   200
-# end
+  200
+end
 
 get '/' do
   erb :index
