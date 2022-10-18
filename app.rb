@@ -13,6 +13,7 @@ configure do
   enable :cross_origin
 end
 
+set :port, 10000
 set :allow_origin, :any
 
 options "*" do
