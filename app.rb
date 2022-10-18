@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require "sinatra/json"
-require 'sinatra/cross_origin'
+# require 'sinatra/cross_origin'
 require 'open-uri'
 require 'date'
 require 'nokogiri'
@@ -9,9 +9,9 @@ require 'nokogiri'
 # require 'sinatra/activerecord'
 # require_relative 'config/application'
 
-configure do
-  enable :cross_origin
-end
+# configure do
+#   enable :cross_origin
+# end
 
 # set :port, 10000
 # set :allow_origin, :any
