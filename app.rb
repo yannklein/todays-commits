@@ -1,12 +1,16 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require "sinatra/json"
+require "sinatra/cors"
 require 'open-uri'
 require 'date'
 require 'nokogiri'
 # Commented out as the project don't use DB
 # require 'sinatra/activerecord'
 # require_relative 'config/application'
+
+set :allow_origin, "*"
+set :allow_methods, "GET"
 
 get '/' do
   erb :index
