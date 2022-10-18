@@ -11,7 +11,6 @@ require 'nokogiri'
 
 configure do
   enable :cross_origin
-  set :allow_origin, :any
 end
 
 get '/' do
@@ -19,6 +18,7 @@ get '/' do
 end
 
 get '/:user_name' do
+  cross_origin :allow_origin, :any
   url = "https://github.com/#{params[:user_name]}"
   raw_html = URI.open(url).read
   html_doc = Nokogiri::HTML(raw_html)
