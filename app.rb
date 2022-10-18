@@ -19,7 +19,7 @@ get '/:user_name' do
   contrib_element = html_doc.search("rect[data-date='#{ Date.today.strftime('%Y-%m-%d')}']")
   contrib = {
     day: Date.today.strftime('%Y-%m-%d'),
-    user_name: params[:user_name]
+    user_name: params[:user_name],
     commits: contrib_element.attribute("data-count").value
   }
   json contrib
