@@ -30,7 +30,7 @@ get '/:user_name' do
   contrib = {
     day: Date.today.strftime('%Y-%m-%d'),
     user_name: params[:user_name],
-    commits: contrib_element.attribute("data-count").value,
+    commits: contrib_element.text.split(" ")[0].to_i,
     location: location_element
   }
   json contrib
