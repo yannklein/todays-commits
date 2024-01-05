@@ -5,6 +5,7 @@ require "sinatra/json"
 require 'open-uri'
 require 'date'
 require 'nokogiri'
+require 'pry'
 # Commented out as the project don't use DB
 # require 'sinatra/activerecord'
 # require_relative 'config/application'
@@ -22,15 +23,16 @@ get '/' do
 end
 
 get '/:user_name' do
-  url = "https://github.com/#{params[:user_name]}"
+  formatted_today = Date.today.strftime('%Y-%m-%d')
+  url = "https://github.com/#{params[:user_name]}?from=#{formatted_today}&to=#{formatted_today}"
   raw_html = URI.open(url).read
-  html_doc = Nokogiri::HTML(raw_html)
-  contrib_element = html_doc.search("rect[data-date='#{ Date.today.strftime('%Y-%m-%d')}']")
+  html_doc = Nokogiri::HTML.parse(raw_html)
+  contrib_item = html_doc.search(".TimelineItem-body span")[0]
   location_element = html_doc.search(".p-label").text.split(", ")
   contrib = {
-    day: Date.today.strftime('%Y-%m-%d'),
+    day: formatted_today,
     user_name: params[:user_name],
-    commits: contrib_element.text.split(" ")[0].to_i,
+    commits: contrib_item.text.strip.split(' ')[1].to_i,
     location: location_element
   }
   json contrib
