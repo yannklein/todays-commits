@@ -10,7 +10,8 @@ gem 'rspec'
 gem 'rubocop'
 gem 'pry'
 gem 'faker'
-gem 'nokogiri'
+# gem 'nokogiri'
+gem 'watir'
 
 gem "puma", "~> 6.0"
 gem "thin", "~> 1.8"
