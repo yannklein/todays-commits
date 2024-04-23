@@ -16,15 +16,15 @@ configure do
 end
 
 before do
-  response.headers["Access-Control-Allow-Origin"] = "*"
+  response.headers['Access-Control-Allow-Origin'] = '*'
 end
 
-get "/" do
+get '/' do
   erb :index
 end
 
-get "/:user_name" do
-  formatted_today = Date.today.strftime("%Y-%m-%d")
+get '/:user_name' do
+  formatted_today = Date.today.strftime('%Y-%m-%d')
   url = "https://github.com/#{params[:user_name]}"
 
   browser = Watir::Browser.new :chrome, options: { args: %w[--headless --no-sandbox --disable-dev-shm-usage --disable-gpu --remote-debugging-port=9222]}
