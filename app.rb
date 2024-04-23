@@ -25,11 +25,13 @@ end
 
 get '/:user_name' do
   formatted_today = Date.today.strftime('%Y-%m-%d')
+  return if params[:user_name] == 'favicon.ico'
+
   url = "https://github.com/#{params[:user_name]}"
 
   browser = Watir::Browser.new :chrome, options: { args: %w[--headless --no-sandbox --disable-dev-shm-usage --disable-gpu --remote-debugging-port=9222]}
   browser.goto(url)
-  Watir::Wait.until { browser.td(data_date: formatted_today).present? }
+  browser.wait_until { browser.td(data_date: formatted_today).present? }
 
   contrib_id = browser.td(data_date: formatted_today).id
   commit_nb = browser.element(for: contrib_id).text.split[0].to_i
